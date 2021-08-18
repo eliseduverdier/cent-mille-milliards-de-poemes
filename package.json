@@ -1,0 +1,33 @@
+{
+    "name": "cent-mille-milliards-de-poemes",
+    "version": "1.0.0",
+    "description": "Compose your own Raymond Quenaud’s poem",
+    "main": "assembly/index.ts",
+    "scripts": {
+        "test": "node tests",
+        "asbuild:untouched": "asc assembly/index.ts --target debug",
+        "asbuild:optimized": "asc assembly/index.ts --target release",
+        "asbuild": "npm run asbuild:untouched && npm run asbuild:optimized"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/eliseduverdier/cent-mille-milliards-de-poemes.git"
+    },
+    "keywords": [
+        "generative literature",
+        "poetry",
+        "cent mille milliards de poemes"
+    ],
+    "author": "elise duverdier",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/eliseduverdier/cent-mille-milliards-de-poemes/issues"
+    },
+    "homepage": "https://github.com/eliseduverdier/cent-mille-milliards-de-poemes#readme",
+    "dependencies": {
+        "@assemblyscript/loader": "^0.19.11"
+    },
+    "devDependencies": {
+        "assemblyscript": "^0.19.11"
+    }
+}
