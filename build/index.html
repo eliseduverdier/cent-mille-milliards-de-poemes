@@ -1,0 +1,40 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>WASM test - poetry</title>
+</head>
+
+<body>
+
+    <article id="output"></article>
+
+    <script>
+        var importObject = {
+            imports: { displayPoem: arg => console.log(arg) }
+        };
+    </script>
+    <script>
+        /* request = new XMLHttpRequest();
+        request.open('GET', 'optimized.wasm');
+        request.responseType = 'arraybuffer';
+        request.send();
+
+        request.onload = function () {
+            var bytes = request.response;
+            WebAssembly.instantiate(bytes, importObject).then(results => {
+                results.instance.exports.displayPoem();
+            });
+        }; */
+    </script>
+
+    <script>
+        // TODO launch server: local gets CORS error
+        WebAssembly.instantiateStreaming(fetch('optimized.wasm'), importObject)
+            .then(obj => obj.instance.exports.displayPoem());
+    </script>
+</body>
+
+</html>
