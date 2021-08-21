@@ -5,9 +5,10 @@
     "main": "assembly/index.ts",
     "scripts": {
         "test": "node tests",
-        "asbuild:untouched": "asc assembly/index.ts --target debug",
+        "asbuild:untouched": "asc assembly/index.ts -b build/untouched.wasm -t build/untouched.wat --sourceMap --validate --debug",
         "asbuild:optimized": "asc assembly/index.ts --target release",
-        "asbuild": "npm run asbuild:untouched && npm run asbuild:optimized"
+        "asbuild": "npm run asbuild:untouched && npm run asbuild:optimized",
+        "serve-demo": "static-server"
     },
     "repository": {
         "type": "git",
@@ -23,11 +24,13 @@
     "bugs": {
         "url": "https://github.com/eliseduverdier/cent-mille-milliards-de-poemes/issues"
     },
-    "homepage": "https://github.com/eliseduverdier/cent-mille-milliards-de-poemes#readme",
+    "homepage": "https://eliseduverdier.fr/cent-mille-milliards-de-poemes",
     "dependencies": {
-        "@assemblyscript/loader": "^0.19.11"
+        "@assemblyscript/loader": "^0.19.11",
+        "binaryen": "^101.0.0"
     },
     "devDependencies": {
-        "assemblyscript": "^0.19.11"
+        "assemblyscript": "^0.19.11",
+        "static-server": "^2.2.1"
     }
 }

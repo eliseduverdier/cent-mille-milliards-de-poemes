@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>WASM displayPoem()</title>
+</head>
+
+<body>
+
+    <article id="output"></article>
+
+    <script>
+        var importObject = {
+            imports: { displayPoem: arg => console.log(arg) }
+        };
+    </script>
+
+    <script>
+        //*
+        WebAssembly.instantiateStreaming(fetch('untouched.wasm'), importObject)
+            .then(obj => obj.instance.exports._displayPoem());
+/*/
+                                        fetch('untouched.wasm').
+                                            then(response => response.arrayBuffer()).
+                                            then(bytes => WebAssembly.instantiate(bytes, importObject)).
+                                            then(obj => obj.instance.exports.displayPoem());
+                                //*/
+    </script>
+</body>
+
+</html>
